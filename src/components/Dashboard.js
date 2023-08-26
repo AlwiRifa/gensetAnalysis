@@ -136,7 +136,7 @@ function Dashboard() {
 
         <div className="flex gap-4">
           <div className="flex flex-col gap-4 w-full">
-            <div className="flex flex-col gap-x-4 gap-y-4 w-full">
+            <div className="md:flex-row flex flex-col gap-4 w-full">
               <div className="p-4 bg-white rounded-md shadow-md ">
                 <p className="text-sm font-semibold">Voltage (V)</p>
                 <div className="text-3xl font-bold ">
@@ -211,7 +211,7 @@ function Dashboard() {
                 Capacitor Recomendations (VAR)
               </p>
               <div className="flex justify-center items-center h-full">
-                <div className=" md:text-7xl text-4 xl font-bold ">
+                <div className=" text-5xl md:text-4xl font-bold ">
                   {" "}
                   {data.power_factor >= 0.9 && data.power_factor <= 1
                     ? 0

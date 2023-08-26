@@ -74,23 +74,37 @@ function Dashboard() {
           };
 
           averageData.voltage =
-            (averageData.voltage * averageData.count + snapshot.val().voltage) / (averageData.count + 1);
+            (averageData.voltage * averageData.count + snapshot.val().voltage) /
+            (averageData.count + 1);
           averageData.current =
-            (averageData.current * averageData.count + snapshot.val().current) / (averageData.count + 1);
+            (averageData.current * averageData.count + snapshot.val().current) /
+            (averageData.count + 1);
           averageData.power =
-            (averageData.power * averageData.count + snapshot.val().power) / (averageData.count + 1);
+            (averageData.power * averageData.count + snapshot.val().power) /
+            (averageData.count + 1);
           averageData.energy =
-            (averageData.energy * averageData.count + snapshot.val().energy) / (averageData.count + 1);
+            (averageData.energy * averageData.count + snapshot.val().energy) /
+            (averageData.count + 1);
           averageData.frequency =
-            (averageData.frequency * averageData.count + snapshot.val().frequency) / (averageData.count + 1);
+            (averageData.frequency * averageData.count +
+              snapshot.val().frequency) /
+            (averageData.count + 1);
           averageData.power_factor =
-            (averageData.power_factor * averageData.count + snapshot.val().power_factor) / (averageData.count + 1);
+            (averageData.power_factor * averageData.count +
+              snapshot.val().power_factor) /
+            (averageData.count + 1);
           averageData.reactive_power =
-            (averageData.reactive_power * averageData.count + parseFloat(firestoreData.reactive_power || 0)) / (averageData.count + 1);
+            (averageData.reactive_power * averageData.count +
+              parseFloat(firestoreData.reactive_power || 0)) /
+            (averageData.count + 1);
           averageData.apparent_power =
-            (averageData.apparent_power * averageData.count + parseFloat(firestoreData.apparent_power || 0)) / (averageData.count + 1);
+            (averageData.apparent_power * averageData.count +
+              parseFloat(firestoreData.apparent_power || 0)) /
+            (averageData.count + 1);
           averageData.kapasitor =
-            (averageData.kapasitor * averageData.count + parseFloat(firestoreData.kapasitor)) /(averageData.count + 1);
+            (averageData.kapasitor * averageData.count +
+              parseFloat(firestoreData.kapasitor)) /
+            (averageData.count + 1);
 
           firestore
             .collection("genset_average")
@@ -112,21 +126,18 @@ function Dashboard() {
 
   return (
     <div className="h-screen w-full bg-[#f6f6f9] text-[#363949] p-6 ">
-      
       <div className="flex flex-col  h-full justify-center">
-      <div className="flex space-x-2 text-white pb-4">
+        <div className="flex space-x-2 text-white pb-4">
           <Link
             to={"/dashboard"}
-            className="py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-400 shadow-md cursor-pointer"
-          >
+            className="py-2 px-4 rounded-md bg-blue-500 hover:bg-blue-400 shadow-md cursor-pointer">
             Realtime
           </Link>
-         
         </div>
 
         <div className="flex gap-4">
           <div className="flex flex-col gap-4 w-full">
-            <div className="flex gap-x-4 w-full">
+            <div className="md:flex-row flex flex-col gap-4 w-full">
               <div className="p-4 bg-white rounded-md shadow-md ">
                 <p className="text-sm font-semibold">Voltage (V)</p>
                 <div className="text-3xl font-bold ">
@@ -164,18 +175,17 @@ function Dashboard() {
               <div className="p-4 bg-white rounded-md shadow-md ">
                 <p className="text-sm font-semibold">Apparent Power (VA)</p>
                 <div className="text-3xl font-bold ">
-                  {(averageData.voltage *
-                    averageData.current ).toFixed(1)}
+                  {(averageData.voltage * averageData.current).toFixed(1)}
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-md  p-4 shadow-md">
+            <div className="bg-white rounded-md  hidden md:block p-4 shadow-md">
               <ChartBaru />
             </div>
           </div>
 
-          <div className=" flex flex-col rounded-md w-[300px]">
+          <div className=" flex flex-col rounded-md md:w-[300px] w-[150px]">
             <div className="p-4 bg-white rounded-md shadow-md ">
               <p className="text-lg text-center font-semibold pb-4">
                 Power Factor
@@ -202,9 +212,10 @@ function Dashboard() {
                 Capacitor Recomendations (VAR)
               </p>
               <div className="flex justify-center items-center h-full">
-                <div className=" text-7xl font-bold ">
+                <div className=" text-5xl font-bold ">
                   {" "}
-                  {averageData.power_factor >= 0.9 && averageData.power_factor <= 1
+                  {averageData.power_factor >= 0.9 &&
+                  averageData.power_factor <= 1
                     ? 0
                     : (
                         averageData.power *
